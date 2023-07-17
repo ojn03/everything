@@ -17,6 +17,8 @@ export const ShortenUrlForm: React.FC<ShortenUrlFormProps> = ({
     },
     [inputUrl, setInputUrl]
   );
+
+  const urlValidation = / (https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/
   return (
     <form onSubmit={onSubmit}>
       <Input
@@ -24,6 +26,8 @@ export const ShortenUrlForm: React.FC<ShortenUrlFormProps> = ({
         size="lg"
         marginBlock={4}
         value={inputUrl}
+        title = "Please enter a valid URL"
+        pattern={urlValidation.source}
         onChange={(e) => {
           setInputUrl(e.target.value);
         }}
